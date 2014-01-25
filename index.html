@@ -14,27 +14,37 @@
 	<body>
 		<input type="hidden" value="1" id="dice" />
 		<input type="hidden" value="1" id="audio" />
-		<table class="content">
+		<table class="content"">
 			<tr>
 				<td class="content">
 					<img id="die1" src="res/1.png" />
-					<br />
+					<span id="placeholder1"></span>
 					<img id="die2" src="res/1.png" style="display: none;" />
-					<br />	
+					<span id="placeholder2"></span>
 					<img id="die3" src="res/1.png" style="display: none;" />
 				</td>
 			</tr>
 		</table>
 		<div>
 			<div class="buttons">
-				<img src="res/refresh.png" id="roll" />&nbsp;
-				<img src="res/speaker_on.png" id="toggleaudio" />&nbsp;
-				<img src="res/plus.png" id="add" />&nbsp;
-				<img src="res/minus_gray.png" id="remove" />
+				<table class="buttons">
+					<tr>
+						<td><img src="res/refresh.png" id="roll" /></td>
+						<td><img src="res/speaker_on.png" id="toggleaudio" /></td>
+						<td><img src="res/plus.png" id="add" /></td>
+						<td><img src="res/minus_gray.png" id="remove" /></td>
+					</tr>
+					<tr>
+						<td>roll</td>
+						<td><span id="toggleaudiolabel">audio on</span></td>
+						<td>add a die</td>
+						<td>remove a die</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<audio id="audioplayer">
-			<source src="res/roll.mp3" type="audio/mp3"></source>
+			<source src="res/roll.mp3" type="audio/mp3" />
 		</audio>
 	</body>
 </html>

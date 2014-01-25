@@ -87,6 +87,6 @@ function setDiceLayout() {
 		document.getElementById("placeholder2").innerHTML = "<br />";
 	} else {
 		document.getElementById("placeholder1").innerHTML = "";
-		document.getElementById("placeholder1").innerHTML = "";
+		document.getElementById("placeholder2").innerHTML = "";
 	}
 }

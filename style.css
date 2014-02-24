@@ -14,8 +14,8 @@ html {
 
 .buttons {
 	position: fixed; 
-	bottom: 0px; 
 	left: 0px;
+	bottom: 0px;
 	width: 100%;
 	text-align: center; 
 	background-color: rgb(0,0,0);
@@ -45,3 +45,8 @@ table.buttons {
 	border-collapse: collapse;
 	background-color: rgb(0,0,0);
 }
+
+.buttontext {
+	padding-bottom: 38px;		
+}
+            

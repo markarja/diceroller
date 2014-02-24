@@ -1,37 +1,10 @@
 $(document).ready(function() {
 	
+	document.addEventListener("deviceready", onDeviceReady, false);
+	
 	setDiceLayout();
 	
-	$("#roll").click(function() {
-		setDiceLayout();
-		var start = new Date().getTime();
-		if($("#audio").val() == 1) {
-			document.getElementById("audioplayer").play();
-		}
-		var dice = $("#dice").val() * 1;
-		for(var i = 1;i < dice + 1;i++) {
-			document.getElementById("die" + i).style.marginLeft = Math.floor(Math.random() * 4) + 1 + "0%";
-			if(!portrait()) {
-				$("#die" + i).effect("shake", {times: 10, direction: 'up'}, 2000);
-			} else {
-				$("#die" + i).effect("shake", {times: 10}, 2000);
-			}
-		}
-		var timer = setInterval(function() {
-			var now = new Date().getTime();
-			var n;
-			for(var i = 1;i < dice + 1;i++) {
-				n = Math.floor(Math.random() * 6) + 1;
-				document.getElementById("die" + i).src = "res/" + n + ".png";
-			}
-			if(now - start >= 2500) {
-				window.clearInterval(timer);
-				for(var i = 1;i < dice + 1;i++) {
-					document.getElementById("die" + i).style.marginLeft = "0";
-				}
-			};
-		}, 100);
-	});
+	$("#roll").click(roll);
 
 	$("#add").click(function() {
 		setDiceLayout();
@@ -73,6 +46,37 @@ $(document).ready(function() {
 	});
 });
 
+function roll() {
+	setDiceLayout();
+	var start = new Date().getTime();
+	if($("#audio").val() == 1) {
+		document.getElementById("audioplayer").play();
+	}
+	var dice = $("#dice").val() * 1;
+	for(var i = 1;i < dice + 1;i++) {
+		document.getElementById("die" + i).style.marginLeft = Math.floor(Math.random() * 4) + 1 + "0%";
+		if(!portrait()) {
+			$("#die" + i).effect("shake", {times: 10, direction: 'up'}, 2000);
+		} else {
+			$("#die" + i).effect("shake", {times: 10}, 2000);
+		}
+	}
+	var timer = setInterval(function() {
+		var now = new Date().getTime();
+		var n;
+		for(var i = 1;i < dice + 1;i++) {
+			n = Math.floor(Math.random() * 6) + 1;
+			document.getElementById("die" + i).src = "res/" + n + ".png";
+		}
+		if(now - start >= 2500) {
+			window.clearInterval(timer);
+			for(var i = 1;i < dice + 1;i++) {
+				document.getElementById("die" + i).style.marginLeft = "0";
+			}
+		};
+	}, 100);
+}
+
 function portrait() {
 	if(window.innerHeight > window.innerWidth) {
 		return true;
@@ -89,4 +93,8 @@ function setDiceLayout() {
 		document.getElementById("placeholder1").innerHTML = "";
 		document.getElementById("placeholder2").innerHTML = "";
 	}
+}
+
+function onDeviceReady() {
+	shake.startWatch(roll);
 }

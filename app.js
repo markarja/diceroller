@@ -96,5 +96,6 @@ function setDiceLayout() {
 }
 
 function onDeviceReady() {
+	document.getElementById("accelerometer").innerHTML = "device is ready";
 	shake.startWatch(roll);
 }

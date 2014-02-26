@@ -29,10 +29,6 @@ var shake = (function () {
 		var accelerationChange = {};
 		
 		if (previousAcceleration.x !== null) {
-			
-			document.getElementById("accelerometer").innerHTML =
-				"x = " + acceleration.x + ",y = " + acceleration.y + ", z = " + acceleration.z;
-			
 			accelerationChange.x = Math.abs(previousAcceleration.x - acceleration.x);
 			accelerationChange.y = Math.abs(previousAcceleration.y - acceleration.y);
 			accelerationChange.z = Math.abs(previousAcceleration.z - acceleration.z);

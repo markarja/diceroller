@@ -47,24 +47,30 @@ $(document).ready(function() {
 });
 
 function roll() {
+	
 	setDiceLayout();
+	
 	var start = new Date().getTime();
+	
 	if($("#audio").val() == 1) {
-		
-		alert(device.platform);
-		var audio = new Media("/android_asset/www/res/roll.mp3", onAudioSuccess, onAudioError);
+		var audio = document.getElementById("audioplayer");
+		if(device.platform == "Android") {
+			audio = new Media("/android_asset/www/res/roll.mp3", onAudioSuccess, onAudioError);
+		} 
 		audio.play();
-		
 	}
+	
 	var dice = $("#dice").val() * 1;
+	
 	for(var i = 1;i < dice + 1;i++) {
 		document.getElementById("die" + i).style.marginLeft = Math.floor(Math.random() * 4) + 1 + "0%";
 		if(!portrait()) {
-			$("#die" + i).effect("shake", {times: 10, direction: 'up'}, 2000);
+			$("#die" + i).effect("shake", {times: 10, direction: "up"}, 2000);
 		} else {
 			$("#die" + i).effect("shake", {times: 10}, 2000);
 		}
 	}
+	
 	var timer = setInterval(function() {
 		var now = new Date().getTime();
 		var n;

@@ -50,7 +50,10 @@ function roll() {
 	setDiceLayout();
 	var start = new Date().getTime();
 	if($("#audio").val() == 1) {
-		document.getElementById("audioplayer").play();
+	
+		var audio = new Media("res/roll.mp3", onAudioSuccess, onAudioError);
+		audio.play();
+		
 	}
 	var dice = $("#dice").val() * 1;
 	for(var i = 1;i < dice + 1;i++) {
@@ -97,4 +100,11 @@ function setDiceLayout() {
 
 function onDeviceReady() {
 	shake.startWatch(roll);
+}
+
+function onAudioSuccess() { }
+
+function onAudioError() {
+	alert("code: " + error.code + "\n" + 
+          "message: " + error.message + "\n");
 }

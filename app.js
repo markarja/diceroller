@@ -50,8 +50,9 @@ function roll() {
 	setDiceLayout();
 	var start = new Date().getTime();
 	if($("#audio").val() == 1) {
-	
-		var audio = new Media("res/roll.mp3", onAudioSuccess, onAudioError);
+		
+		alert("play audio");
+		var audio = new Media("/android_asset/www/res/roll.mp3", onAudioSuccess, onAudioError);
 		audio.play();
 		
 	}

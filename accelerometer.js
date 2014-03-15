@@ -1,5 +1,7 @@
 var shake = (function () {
 	
+	var threshold = 20;
+	
 	var shake = {},
 		watchId = null,
 		options = { frequency: 300 },
@@ -34,7 +36,7 @@ var shake = (function () {
 			accelerationChange.z = Math.abs(previousAcceleration.z - acceleration.z);
 		}
 
-		if (accelerationChange.x + accelerationChange.y + accelerationChange.z > 30) {
+		if (accelerationChange.x + accelerationChange.y + accelerationChange.z > threshold) {
 
 			if (typeof (shakeCallBack) === "function") {
 				shakeCallBack();

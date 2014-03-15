@@ -51,7 +51,7 @@ function roll() {
 	var start = new Date().getTime();
 	if($("#audio").val() == 1) {
 		
-		alert("play audio");
+		alert(device.platform);
 		var audio = new Media("/android_asset/www/res/roll.mp3", onAudioSuccess, onAudioError);
 		audio.play();
 		

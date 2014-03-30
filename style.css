@@ -6,6 +6,7 @@ body {
 	font-family: Helvetica;	
 	font-weight: lighter;
 	margin: 0px;
+	-ms-touch-action: none;
 }
 
 html {

@@ -50,4 +50,8 @@ table.buttons {
 .buttontext {
 	padding-bottom: 38px;		
 }
-            
+
+.button {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}

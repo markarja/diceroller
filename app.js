@@ -53,7 +53,7 @@ function roll() {
 	var start = new Date().getTime();
 	
 	playAudio("res/roll.mp3", ($("#audio").val() == 1));
-	navigator.notification.vibrate("2500");
+	navigator.notification.vibrate("500");
 	
 	var dice = $("#dice").val() * 1;
 	

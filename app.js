@@ -109,14 +109,13 @@ function playAudio(audioSource, audio) {
 		var audio = document.getElementById("audioplayer");
 		if(typeof device != "undefined") {
 			if(device.platform == "Android") {
-				audio = new Media("/android_asset/www/" + audioSource, 
-						function() { audio.release(); }
-						, onAudioError);
-			} else {
-				audio = new Media(audioSource, 
-						function() { audio.release(); }
-						, onAudioError);
-			}
+				audioSource = "/android_asset/www/" + audioSource;
+			} else if(device.platform == "WinCE") {
+				audioSource = "/app/www/" + audioSource;
+			} 
+			audio = new Media(audioSource, 
+				function() { audio.release(); }
+				, onAudioError);
 			audio.play();	
 		} else {
 			audio.play();

@@ -52,18 +52,7 @@ function roll() {
 	
 	var start = new Date().getTime();
 	
-	if($("#audio").val() == 1) {
-		var audio = document.getElementById("audioplayer");
-		if(device.platform == "Android") {
-			audio = new Media("/android_asset/www/res/roll.mp3", 
-					function() { audio.release(); }
-					, onAudioError);
-			audio.play();
-		} else {
-			audio.play();
-		}
-		
-	}
+	playAudio("res/roll.mp3", ($("#audio").val() == 1));
 	
 	var dice = $("#dice").val() * 1;
 	
@@ -112,6 +101,27 @@ function setDiceLayout() {
 
 function onDeviceReady() {
 	shake.startWatch(roll);
+}
+
+function playAudio(audioSource, audio) {
+	if(audio) {
+		document.getElementById("audioplayer").src = audioSource;
+		var audio = document.getElementById("audioplayer");
+		if(typeof device != "undefined") {
+			if(device.platform == "Android") {
+				audio = new Media("/android_asset/www/" + audioSource, 
+						function() { audio.release(); }
+						, onAudioError);
+			} else {
+				audio = new Media(audioSource, 
+						function() { audio.release(); }
+						, onAudioError);
+			}
+			audio.play();	
+		} else {
+			audio.play();
+		}
+	}
 }
 
 function onAudioError() {

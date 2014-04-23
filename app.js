@@ -53,7 +53,6 @@ function roll() {
 	var start = new Date().getTime();
 	
 	playAudio("res/roll.mp3", ($("#audio").val() == 1));
-	navigator.notification.vibrate("500");
 	
 	var dice = $("#dice").val() * 1;
 	
@@ -78,6 +77,7 @@ function roll() {
 			for(var i = 1;i < dice + 1;i++) {
 				document.getElementById("die" + i).style.marginLeft = "0";
 			}
+			navigator.notification.vibrate("500");
 		};
 	}, 100);
 }

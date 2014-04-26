@@ -77,7 +77,6 @@ function roll() {
 			for(var i = 1;i < dice + 1;i++) {
 				document.getElementById("die" + i).style.marginLeft = "0";
 			}
-			navigator.notification.vibrate("500");
 		};
 	}, 100);
 }

@@ -100,7 +100,13 @@ function setDiceLayout() {
 }
 
 function onDeviceReady() {
+	
 	shake.startWatch(roll);
+	
+	if(window.plugins && window.plugins.iAd) {
+		window.plugins.iAd.createBannerView({"bannerAtTop": true}, function() { window.plugins.iAd.showAd(true); }, function() { });
+	}
+	
 }
 
 function playAudio(audioSource, audio) {

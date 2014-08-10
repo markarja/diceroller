@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
+	window.addEventListener("resize", onOrientationChanged, false);
 	
 	setDiceLayout();
 	
@@ -48,8 +49,6 @@ $(document).ready(function() {
 
 function roll() {
 	
-	setDiceLayout();
-	
 	var start = new Date().getTime();
 	
 	playAudio("res/roll.mp3", ($("#audio").val() == 1));
@@ -93,20 +92,16 @@ function setDiceLayout() {
 	if(portrait()) {
 		document.getElementById("placeholder1").innerHTML = "<br />";
 		document.getElementById("placeholder2").innerHTML = "<br />";
+		document.getElementById("buttons").style.visibility = "visible";
 	} else {
 		document.getElementById("placeholder1").innerHTML = "";
 		document.getElementById("placeholder2").innerHTML = "";
+		document.getElementById("buttons").style.visibility = "hidden";
 	}
 }
 
 function onDeviceReady() {
-	
-	shake.startWatch(roll);
-	
-	if(window.plugins && window.plugins.iAd) {
-		window.plugins.iAd.createBannerView({"bannerAtTop": true}, function() { window.plugins.iAd.showAd(true); }, function() { });
-	}
-	
+	shake.startWatch(roll);	
 }
 
 function playAudio(audioSource, audio) {
@@ -132,4 +127,8 @@ function playAudio(audioSource, audio) {
 function onAudioError() {
 	alert("code: " + error.code + "\n" + 
           "message: " + error.message + "\n");
+}
+
+function onOrientationChanged() {
+	setDiceLayout();
 }

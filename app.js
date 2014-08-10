@@ -112,7 +112,7 @@ function playAudio(audioSource, audio) {
 			if(device.platform == "Android") {
 				audioSource = "/android_asset/www/" + audioSource;
 			} else if(device.platform == "WinCE") {
-				audioSource = "/app/www/" + audioSource;
+				audioSource = "app/www/" + audioSource;
 			} 
 			audio = new Media(audioSource, 
 				function() { audio.release(); }

@@ -111,10 +111,13 @@ function playAudio(audioSource, audio) {
 		if(typeof device != "undefined") {
 			if(device.platform == "Android") {
 				audioSource = "/android_asset/www/" + audioSource;
+				audio = new Media(audioSource, function() { audio.release(); }, onAudioError);
 			} else if(device.platform == "WinCE") {
 				audioSource = "/app/www/" + audioSource;
-			} 
-			audio = new Media(audioSource, function() {  }, onAudioError);
+				audio = new Media(audioSource, function() {  }, onAudioError);
+			} else {
+				audio = new Media(audioSource, function() {  }, onAudioError);	
+			}
 			audio.play();	
 		} else {
 			audio.play();

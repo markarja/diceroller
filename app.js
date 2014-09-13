@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
-	window.addEventListener("resize", onOrientationChanged, false);
 	
 	setDiceLayout();
 	
@@ -45,6 +44,7 @@ $(document).ready(function() {
 			$("#audio").val(1);
 		}			                                            
 	});
+
 });
 
 function roll() {

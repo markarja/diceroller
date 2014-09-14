@@ -48,10 +48,36 @@ table.buttons {
 }
 
 .buttontext {
-	padding-bottom: 38px;		
+	/* WP */
+	padding-bottom: 38px;
+	/*padding-bottom: 5px;*/	
 }
 
 .button {
   	-webkit-tap-highlight-color: rgba(0,0,0,0);
   	-webkit-tap-highlight-color: transparent;
 }
+
+.die {
+	width: 75px;	
+}
+
+.sum {
+	top: 50px;
+	z-index: 2;
+	opacity: 0.9;
+	position: fixed; 
+	vertical-align: middle;
+	text-align: center;
+	display:block;
+	width: 100%;
+	font-size: 40px;
+	display: none;	
+}
+
+.help {
+	position:fixed; 
+	bottom: 180px;
+	width: 100%;
+	font-size: 30px;	
+}	

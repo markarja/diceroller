@@ -1,26 +1,34 @@
 $(document).ready(function() {
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
+	window.addEventListener("resize", onOrientationChanged, false);
 	
 	setDiceLayout();
 	
 	$("#roll").click(roll);
 
 	$("#add").click(function() {
-		setDiceLayout();
-		if($("#dice").val() < 3) {
+		if($("#dice").val() < 5) {
 			var id = "die" + (($("#dice").val() * 1) + 1);
 			document.getElementById(id).style.display = "inline";
 			$("#dice").val($("#dice").val() * 1 + 1);
 			document.getElementById("remove").src = "res/minus.png";
-			if($("#dice").val() == 3) {
+		
+			calculateSumAndDisplayIt();
+			
+			if($("#dice").val() == 5) {
 				document.getElementById("add").src = "res/plus_gray.png";
 			}
+			if($("#dice").val() == 4) {
+				for(i = 0;i < 5;i++) {
+					$("#die" + (i + 1)).css("width", "60px");
+				} 
+			} 
 		}
+		setDiceLayout();
 	});
 
 	$("#remove").click(function() {
-		setDiceLayout();
 		if($("#dice").val() > 1) {
 			var id = "die" + (($("#dice").val() * 1));
 			document.getElementById(id).style.display = "none";
@@ -29,7 +37,15 @@ $(document).ready(function() {
 			if($("#dice").val() == 1) {
 				document.getElementById("remove").src = "res/minus_gray.png";
 			}
+			if($("#dice").val() == 3) {
+				for(i = 0;i < 5;i++) {
+					$("#die" + (i + 1)).css("width", "75px");
+				} 
+			}
+			
+			calculateSumAndDisplayIt();
 		}
+		setDiceLayout();
 	});
 
 	$("#toggleaudio").click(function() {
@@ -44,14 +60,33 @@ $(document).ready(function() {
 			$("#audio").val(1);
 		}			                                            
 	});
+	
+	$("#help").fadeOut(3000);
 
 });
+
+function calculateSumAndDisplayIt() {
+	if($("#dice").val() >= 2) {
+		var sum = 0;
+		for(i = 0;i < 5;i++) {
+			if($("#die" + (i + 1)).css("display") == "inline") {
+				var src = $("#die" + (i + 1)).attr("src");
+				var parts = src.split("/")[1].split(".");
+				sum = sum + 1 * parts[0];
+			}
+		}
+		$("#sum").html(sum);
+		$("#sum").css("display", "block");
+	} else {
+		$("#sum").css("display", "none");
+	}
+}
 
 function roll() {
 	
 	var start = new Date().getTime();
 	
-	playAudio("roll.mp3", ($("#audio").val() == 1));
+	playAudio("res/roll.mp3", ($("#audio").val() == 1));
 	
 	var dice = $("#dice").val() * 1;
 	
@@ -65,6 +100,7 @@ function roll() {
 	}
 	
 	var timer = setInterval(function() {
+		
 		var now = new Date().getTime();
 		var n;
 		for(var i = 1;i < dice + 1;i++) {
@@ -76,7 +112,11 @@ function roll() {
 			for(var i = 1;i < dice + 1;i++) {
 				document.getElementById("die" + i).style.marginLeft = "0";
 			}
+			
 		};
+		
+		calculateSumAndDisplayIt();
+		
 	}, 100);
 }
 
@@ -89,15 +129,49 @@ function portrait() {
 }
 
 function setDiceLayout() {
-	if(portrait()) {
-		document.getElementById("placeholder1").innerHTML = "<br />";
-		document.getElementById("placeholder2").innerHTML = "<br />";
-		document.getElementById("buttons").style.visibility = "visible";
-	} else {
-		document.getElementById("placeholder1").innerHTML = "";
-		document.getElementById("placeholder2").innerHTML = "";
-		document.getElementById("buttons").style.visibility = "hidden";
-	}
+	if($("#dice").val() <= 3) {
+		if(portrait()) {
+			$("#placeholder1").html("<br />");
+			$("#placeholder2").html("<br />");
+			$("#placeholder3").html("<br />");
+			$("#placeholder4").html("<br />");
+			$("#buttons").css("visibility", "visible");			
+		} else {
+			$("#placeholder1").html("");
+			$("#placeholder2").html("");
+			$("#placeholder3").html("");
+			$("#placeholder4").html("");	
+			$("#buttons").css("visibility", "hidden");			
+		}
+	} else if($("#dice").val() == 4) {
+		if(portrait()) {
+			$("#placeholder1").html("");
+			$("#placeholder2").html("<br />");
+			$("#placeholder3").html("");
+			$("#placeholder4").html("<br />");
+			$("#buttons").css("visibility", "visible");			
+		} else {
+			$("#placeholder1").html("");
+			$("#placeholder2").html("");
+			$("#placeholder3").html("");
+			$("#placeholder4").html("");
+			$("#buttons").css("visibility", "hidden");
+		}
+	} else if($("#dice").val() == 5) {
+		if(portrait()) {
+			$("#placeholder1").html("<br />");
+			$("#placeholder2").html("");
+			$("#placeholder3").html("");
+			$("#placeholder4").html("<br />");
+			$("#buttons").css("visibility", "visible");			
+		} else {
+			$("#placeholder1").html("");
+			$("#placeholder2").html("");
+			$("#placeholder3").html("");
+			$("#placeholder4").html("");
+			$("#buttons").css("visibility", "hidden");
+		}
+	} 
 }
 
 function onDeviceReady() {
@@ -113,8 +187,9 @@ function playAudio(audioSource, audio) {
 				audioSource = "/android_asset/www/" + audioSource;
 				audio = new Media(audioSource, function() { audio.release(); }, onAudioError);
 			} else if(device.platform == "WinCE") {
-				audioSource = "/app/www/" + audioSource;
-				audio = new Media(audioSource, function() {  }, onAudioError);
+				audioSource = "http://www.markuskarjalainen.com/html5/dice/res/roll.mp3";
+				document.getElementById("audioplayer").src = audioSource;
+				audio = document.getElementById("audioplayer");
 			} else {
 				audio = new Media(audioSource, function() {  }, onAudioError);	
 			}

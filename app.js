@@ -135,13 +135,15 @@ function setDiceLayout() {
 			$("#placeholder2").html("<br />");
 			$("#placeholder3").html("<br />");
 			$("#placeholder4").html("<br />");
-			$("#buttons").css("visibility", "visible");			
+			$("#buttons").css("visibility", "visible");	
+			$("#sum").css("top", "50px");
 		} else {
 			$("#placeholder1").html("");
 			$("#placeholder2").html("");
 			$("#placeholder3").html("");
 			$("#placeholder4").html("");	
-			$("#buttons").css("visibility", "hidden");			
+			$("#buttons").css("visibility", "hidden");
+			$("#sum").css("top", "180px");
 		}
 	} else if($("#dice").val() == 4) {
 		if(portrait()) {
@@ -149,13 +151,15 @@ function setDiceLayout() {
 			$("#placeholder2").html("<br />");
 			$("#placeholder3").html("");
 			$("#placeholder4").html("<br />");
-			$("#buttons").css("visibility", "visible");			
+			$("#buttons").css("visibility", "visible");	
+			$("#sum").css("top", "50px");
 		} else {
 			$("#placeholder1").html("");
 			$("#placeholder2").html("");
 			$("#placeholder3").html("");
 			$("#placeholder4").html("");
 			$("#buttons").css("visibility", "hidden");
+			$("#sum").css("top", "180px");
 		}
 	} else if($("#dice").val() == 5) {
 		if(portrait()) {
@@ -163,13 +167,15 @@ function setDiceLayout() {
 			$("#placeholder2").html("");
 			$("#placeholder3").html("");
 			$("#placeholder4").html("<br />");
-			$("#buttons").css("visibility", "visible");			
+			$("#buttons").css("visibility", "visible");
+			$("#sum").css("top", "50px");
 		} else {
 			$("#placeholder1").html("");
 			$("#placeholder2").html("");
 			$("#placeholder3").html("");
 			$("#placeholder4").html("");
 			$("#buttons").css("visibility", "hidden");
+			$("#sum").css("top", "180px");
 		}
 	} 
 }

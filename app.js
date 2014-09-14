@@ -194,8 +194,7 @@ function playAudio(audioSource, audio) {
 				audio = new Media(audioSource, function() { audio.release(); }, onAudioError);
 			} else if(device.platform == "WinCE") {
 				audioSource = "http://www.markuskarjalainen.com/html5/dice/res/roll.mp3";
-				document.getElementById("audioplayer").src = audioSource;
-				audio = document.getElementById("audioplayer");
+				audio = new Media(audioSource, function() {  }, onAudioError);
 			} else {
 				audio = new Media(audioSource, function() {  }, onAudioError);	
 			}

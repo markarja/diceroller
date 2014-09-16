@@ -49,8 +49,8 @@ table.buttons {
 
 .buttontext {
 	/* WP */
-	padding-bottom: 38px;
-	/*padding-bottom: 5px;*/	
+	/*padding-bottom: 38px;*/
+	padding-bottom: 5px;	
 }
 
 .button {

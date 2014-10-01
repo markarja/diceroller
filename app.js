@@ -187,20 +187,20 @@ function onDeviceReady() {
 function playAudio(audioSource, audio) {
 	if(audio) {
 		document.getElementById("audioplayer").src = audioSource;
-		var audio = document.getElementById("audioplayer");
+		var audioObject = document.getElementById("audioplayer");
 		if(typeof device != "undefined") {
 			if(device.platform == "Android") {
 				audioSource = "/android_asset/www/" + audioSource;
-				audio = new Media(audioSource, function() { audio.release(); }, onAudioError);
+				audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
 			} else if(device.platform == "WinCE") {
-				audioSource = "http://www.markuskarjalainen.com/html5/dice/res/roll.mp3";
-				audio = new Media(audioSource, function() {  }, onAudioError);
+				audioSource = "/app/www/" + audioSource;
+				audioObject = new Media(audioSource, function() {  }, onAudioError);
 			} else {
-				audio = new Media(audioSource, function() {  }, onAudioError);	
+				audioObject = new Media(audioSource, function() {  }, onAudioError);	
 			}
-			audio.play();	
+			audioObject.play();	
 		} else {
-			audio.play();
+			audioObject.play();
 		}
 	}
 }

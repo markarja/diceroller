@@ -7,10 +7,12 @@ body {
 	font-weight: lighter;
 	margin: 0px;
 	-ms-touch-action: none;
+	overflow: hidden;
 }
 
 html {
  	height: 100%;
+ 	overflow: hidden;
 }
 
 .buttons {

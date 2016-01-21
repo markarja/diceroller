@@ -179,6 +179,7 @@ function setDiceLayout() {
 		}
 	} 
 	$("#content").css("height", (window.innerHeight - 90) + "px");
+	$("#sum").css("top", Math.ceil(window.innerHeight / 8) + "px");
 }
 
 function onDeviceReady() {

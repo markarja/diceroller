@@ -178,6 +178,7 @@ function setDiceLayout() {
 			$("#sum").css("top", "180px");
 		}
 	} 
+	$("#content").css("height", (window.innerHeight - 90) + "px");
 }
 
 function onDeviceReady() {

@@ -51,11 +51,11 @@ $(document).ready(function() {
 	$("#toggleaudio").click(function() {
 		setDiceLayout();
 		if($("#audio").val() == 1) {
-			document.getElementById("toggleaudio").src = "res/speaker_off.png";
+			document.getElementById("audioicon").innerHTML = "volume_off";
 			document.getElementById("toggleaudiolabel").innerHTML = "audio off";
 			$("#audio").val(0);
 		} else {
-			document.getElementById("toggleaudio").src = "res/speaker_on.png";
+			document.getElementById("audioicon").innerHTML = "volume_up";
 			document.getElementById("toggleaudiolabel").innerHTML = "audio on";
 			$("#audio").val(1);
 		}			                                            

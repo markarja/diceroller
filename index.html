@@ -11,8 +11,13 @@
 		<script src="res/jquery-ui.js"></script>
 		<script src="accelerometer.js"></script>
 		<script src="app.js"></script>
+		<link rel="stylesheet" href="res/mdl/material.min.css">
+		<script src="res/mdl/material.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>
+		<!-- <script type="text/javascript" src="http://ad.leadbolt.net/show_app_ad.js?section_id=609318988"></script> -->
+		<img src="ad-placeholder.gif" style="visibility: hidden;" />
 		<input type="hidden" value="1" id="dice" />
 		<input type="hidden" value="1" id="audio" />
 		<table class="content" id="content">
@@ -34,16 +39,38 @@
 			<div class="buttons">
 				<table class="buttons">
 					<tr>
-						<td><img src="res/refresh.png" id="roll" class="button" /></td>
-						<td><img src="res/speaker_on.png" id="toggleaudio" class="button" /></td>
-						<td><img src="res/plus.png" id="add" class="button" /></td>
-						<td><img src="res/minus_gray.png" id="remove" class="button" /></td>
+						<td id="toggleaudio">
+							<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">
+  								<i class="material-icons" id="audioicon">volume_up</i>
+							</button>
+						</td>
+						<td id="add">
+							<button id="addbutton" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">
+  								<i class="material-icons">add</i>
+							</button>
+						</td>
+						<td id="roll">
+							<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect">
+  								<i class="material-icons">loop</i>
+							</button>
+						</td>
+						<td id="remove">
+							<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">
+  								<i class="material-icons">remove</i>
+							</button>
+						</td>
+						<td id="moreapps">
+							<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect">
+  								<i class="material-icons">new_releases</i>
+							</button>
+						</td>
 					</tr>
 					<tr>
-						<td class="buttontext">roll</td>
 						<td class="buttontext"><span id="toggleaudiolabel">audio on</span></td>
 						<td class="buttontext">add a die</td>
+						<td class="buttontext">roll</td>
 						<td class="buttontext">remove a die</td>
+						<td class="buttontext">more apps</td>
 					</tr>
 				</table>
 			</div>

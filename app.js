@@ -61,6 +61,10 @@ $(document).ready(function() {
 		}			                                            
 	});
 	
+	$("#moreapps").click(function() {
+		$("#applist").css("visibility", "visible");
+	});
+	
 	$("#help").fadeOut(3000);
 
 });

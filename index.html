@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<!-- <script type="text/javascript" src="http://ad.leadbolt.net/show_app_ad.js?section_id=609318988"></script> -->
-		<img src="ad-placeholder.gif" style="visibility: hidden;" />
+		<img src="ad-placeholder.gif" style="visibility: visible;" />
 		<input type="hidden" value="1" id="dice" />
 		<input type="hidden" value="1" id="audio" />
 		<table class="content" id="content">
@@ -84,5 +84,46 @@
 		<audio id="audioplayer">
 			<source src="res/roll.mp3" type="audio/mp3" />
 		</audio>
+		<div id="applist" class="applist">
+			<div class="applist-element">
+				<div class="applist-element-image-wrapper">
+					<img src="https://markuskarjalainen.com/html5/applist/uv-now.png" class="applist-element-image" />
+				</div>
+				<div class="applist-element-content-wrapper"> 
+						<b>UV radiation now</b> 
+						<br /><span class="applist-element-content-wrapper">The easiest way to check the UV index in your area.<span>
+				</div>
+				<div class="applist-element-install-button">
+					<span class="applist-element-install-button">&nbsp;install&nbsp;<span>
+				</div>
+			</div>
+			<div class="applist-element">
+				<div class="applist-element-image-wrapper">
+					<img src="https://markuskarjalainen.com/html5/applist/uv-now-free.png" class="applist-element-image" />
+				</div>
+				<div class="applist-element-content-wrapper">
+						<b>UV radiation now FREE</b> 
+						<br /><span class="applist-element-content-wrapper">The easiest way to check the UV index in your area.</span>
+				</div>
+				<div class="applist-element-install-button">
+					<span class="applist-element-install-button">&nbsp;install&nbsp;<span>
+				</div>
+			</div>			
+			<div class="applist-element">
+				<div class="applist-element-image-wrapper">
+					<img src="https://markuskarjalainen.com/html5/applist/cac.png" class="applist-element-image" />
+				</div>
+				<div class="applist-element-content-wrapper">
+						<b>Call a Conference</b> 
+						<br /><span class="applist-element-content-wrapper">Join recurring teleconferences faster and be more productive. </span>
+				</div>
+				<div class="applist-element-install-button">
+					<span class="applist-element-install-button">&nbsp;install&nbsp;<span>
+				</div>
+			</div>
+			<div class="applist-cancel-button">
+				<span onclick="document.getElementById('applist').style.visibility = 'hidden'" class="applist-cancel-button">&nbsp;cancel&nbsp;<span>
+			</div>
+		</div>
 	</body>
 </html>

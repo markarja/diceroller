@@ -44,6 +44,8 @@
     <plugin name="org.apache.cordova.device-motion" source="npm" />
     <plugin name="org.apache.cordova.media" source="npm" />
     <plugin name="phonegap-admob" source="npm" />
+	<plugin name="cordova-plugin-inappbrowser" source="npm" />	
+	<plugin name="cordova-plugin-whitelist" source="npm" />    
 
     <icon src="icon.png" />
 

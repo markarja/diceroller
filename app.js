@@ -190,7 +190,7 @@ function onDeviceReady() {
 	admob.createBannerView({
 		publisherId: "ca-app-pub-1309397168819129/8255754892",
 		isTesting: true,
-		offsetStatusBar: true,
+		offsetStatusBar: false,
 		bannerAtTop: true
 	});	
 	shake.startWatch(roll);	

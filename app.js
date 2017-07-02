@@ -1,4 +1,4 @@
-var online = !navigator.onLine;
+var online = navigator.onLine;
 
 $(document).ready(function() {
 	
@@ -89,7 +89,12 @@ $(document).ready(function() {
 		if(online) {
 			$("#applist").css("visibility", "visible");
 		} else {
-			alert("This feature is only available when the device is online.");
+			navigator.notification.alert(
+					"This feature is only available when the device is online.",
+				    function() { },
+				    "Device not online",
+				    'OK'
+			);
 		}
 	});
 	

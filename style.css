@@ -90,3 +90,26 @@ i.button {
 	width: 40px;
 	height: 40px;	
 }
+
+@media (min-width: 600px) {
+	table.buttons {
+		width: 100%; 
+		font-size: 18px;
+		border-collapse: collapse;
+		background-color: rgb(0,0,0);
+	}
+	.icon {
+		width: 60px;
+		height: 60px;	
+	}
+	i.button {
+	  	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	  	-webkit-tap-highlight-color: transparent;
+	  	font-size: 80px;
+	  	color: #ffffff;
+	}
+	.die {
+		padding-top: 4px;
+		width: 100px;	
+	}
+}

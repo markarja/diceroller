@@ -1,4 +1,5 @@
 var online = navigator.onLine;
+var smallDisplay = window.innerHeight < 600;
 
 $(document).ready(function() {
 	
@@ -7,7 +8,7 @@ $(document).ready(function() {
 	
 	setDiceLayout();
 	
-	if(online) {
+	if(online && smallDisplay) {
 		$("#toggleaudio").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons" id="audioicon">volume_up</i></button>');
 		$("#remove").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons">remove</i></button>');
 		$("#roll").html('<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect"><i class="material-icons">loop</i></button>');
@@ -37,7 +38,9 @@ $(document).ready(function() {
 			}
 			if($("#dice").val() == 4) {
 				for(i = 0;i < 5;i++) {
-					$("#die" + (i + 1)).css("width", "60px");
+					if(window.innerWidth < 600) {
+						$("#die" + (i + 1)).css("width", "60px");
+					}
 				} 
 			} 
 		}
@@ -55,7 +58,11 @@ $(document).ready(function() {
 			}
 			if($("#dice").val() == 3) {
 				for(i = 0;i < 5;i++) {
-					$("#die" + (i + 1)).css("width", "75px");
+					if(smallDisplay) {
+						$("#die" + (i + 1)).css("width", "75px");
+					} else {
+						$("#die" + (i + 1)).css("width", "100px");
+					}
 				} 
 			}
 			
@@ -67,7 +74,7 @@ $(document).ready(function() {
 	$("#toggleaudio").click(function() {
 		setDiceLayout();
 		if($("#audio").val() == 1) {
-			if(online) {
+			if(online && smallDisplay) {
 				document.getElementById("audioicon").innerHTML = "volume_off";
 			} else {
 				$("#toggleaudio").html('<img src="res/audio_off.png" style="height: 50px;" />');
@@ -75,7 +82,7 @@ $(document).ready(function() {
 			document.getElementById("toggleaudiolabel").innerHTML = "audio off";
 			$("#audio").val(0);
 		} else {
-			if(online) {
+			if(online && smallDisplay) {
 				document.getElementById("audioicon").innerHTML = "volume_up";
 			} else {
 				$("#toggleaudio").html('<img src="res/audio_on.png" style="height: 50px;" />');

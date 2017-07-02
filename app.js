@@ -1,5 +1,5 @@
 var online = navigator.onLine;
-var smallDisplay = window.innerHeight < 600;
+var smallDisplay = window.innerWidth < 600;
 
 $(document).ready(function() {
 	
@@ -7,7 +7,7 @@ $(document).ready(function() {
 	window.addEventListener("resize", onOrientationChanged, false);
 	
 	setDiceLayout();
-	
+
 	if(online && smallDisplay) {
 		$("#toggleaudio").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons" id="audioicon">volume_up</i></button>');
 		$("#remove").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons">remove</i></button>');
@@ -38,7 +38,7 @@ $(document).ready(function() {
 			}
 			if($("#dice").val() == 4) {
 				for(i = 0;i < 5;i++) {
-					if(window.innerWidth < 600) {
+					if(smallDisplay) {
 						$("#die" + (i + 1)).css("width", "60px");
 					}
 				} 

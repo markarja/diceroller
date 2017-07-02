@@ -189,8 +189,9 @@ function setDiceLayout() {
 function onDeviceReady() {
 	admob.createBannerView({
 		publisherId: "ca-app-pub-1309397168819129/8255754892",
+		adSize: admob.AD_SIZE.SMART_BANNER,
 		isTesting: true,
-		offsetStatusBar: false,
+		offsetStatusBar: true,
 		bannerAtTop: true
 	});	
 	shake.startWatch(roll);	

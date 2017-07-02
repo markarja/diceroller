@@ -1,9 +1,25 @@
+var online = !navigator.onLine;
+
 $(document).ready(function() {
 	
 	document.addEventListener("deviceready", onDeviceReady, false);
 	window.addEventListener("resize", onOrientationChanged, false);
 	
 	setDiceLayout();
+	
+	if(online) {
+		$("#toggleaudio").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons" id="audioicon">volume_up</i></button>');
+		$("#remove").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons">remove</i></button>');
+		$("#roll").html('<button class="mdl-button mdl-js-button mdl-button--accent mdl-js-ripple-effect"><i class="material-icons">loop</i></button>');
+		$("#add").html('<button id="addbutton" class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons">add</i></button>');
+		$("#moreapps").html('<button class="mdl-button mdl-js-button mdl-button--primary mdl-js-ripple-effect"><i class="material-icons">new_releases</i></button>');
+	} else {
+		$("#toggleaudio").html('<img src="res/audio_on.png" class="icon" />');
+		$("#remove").html('<img src="res/remove.png" class="icon" />');
+		$("#roll").html('<img src="res/roll.png" class="icon" />');
+		$("#add").html('<img src="res/add.png" class="icon" />');
+		$("#moreapps").html('<img src="res/moreapps.png" class="icon" />');
+	}
 	
 	$("#roll").click(roll);
 
@@ -51,18 +67,30 @@ $(document).ready(function() {
 	$("#toggleaudio").click(function() {
 		setDiceLayout();
 		if($("#audio").val() == 1) {
-			document.getElementById("audioicon").innerHTML = "volume_off";
+			if(online) {
+				document.getElementById("audioicon").innerHTML = "volume_off";
+			} else {
+				$("#toggleaudio").html('<img src="res/audio_off.png" style="height: 50px;" />');
+			}
 			document.getElementById("toggleaudiolabel").innerHTML = "audio off";
 			$("#audio").val(0);
 		} else {
-			document.getElementById("audioicon").innerHTML = "volume_up";
+			if(online) {
+				document.getElementById("audioicon").innerHTML = "volume_up";
+			} else {
+				$("#toggleaudio").html('<img src="res/audio_on.png" style="height: 50px;" />');
+			}
 			document.getElementById("toggleaudiolabel").innerHTML = "audio on";
 			$("#audio").val(1);
 		}			                                            
 	});
 	
 	$("#moreapps").click(function() {
-		$("#applist").css("visibility", "visible");
+		if(online) {
+			$("#applist").css("visibility", "visible");
+		} else {
+			alert("This feature is only available when the device is online.");
+		}
 	});
 	
 	$("#help").fadeOut(3000);

@@ -41,10 +41,10 @@
 
     <!-- Plugins -->
     <!-- <plugin name="cordova-plugin-device" source="npm" />
-    <plugin name="cordova-plugin-device-motion" source="npm" />
     <plugin name="cordova-plugin-media" source="npm" version="2.4.0" />
     <plugin name="cordova-plugin-nativeaudio" source="npm" />	
 	<plugin name="cordova-plugin-dialogs" source="npm" />-->
+	<plugin name="cordova-plugin-device-motion" source="npm" />
 	<plugin name="cordova-plugin-inappbrowser" source="npm" />
 	<plugin name="cordova-plugin-whitelist" source="npm" />
     <plugin name="phonegap-admob" source="npm" />    

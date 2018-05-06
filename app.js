@@ -238,23 +238,27 @@ function onDeviceReady() {
 }
 
 function playAudio(audioSource, audio) {
-	if(audio) {
-		document.getElementById("audioplayer").src = audioSource;
-		var audioObject = document.getElementById("audioplayer");
-		if(typeof device != "undefined") {
-			if(device.platform == "Android") {
-				audioSource = "/android_asset/www/" + audioSource;
-				audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
-			} else if(device.platform == "WinCE") {
-				audioSource = "/app/www/" + audioSource;
-				audioObject = new Media(audioSource, function() {  }, onAudioError);
+	try {
+		if(audio) {
+			document.getElementById("audioplayer").src = audioSource;
+			var audioObject = document.getElementById("audioplayer");
+			if(typeof device != "undefined") {
+				if(device.platform == "Android") {
+					audioSource = "/android_asset/www/" + audioSource;
+					audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
+				} else if(device.platform == "WinCE") {
+					audioSource = "/app/www/" + audioSource;
+					audioObject = new Media(audioSource, function() {  }, onAudioError);
+				} else {
+					audioObject = new Media(audioSource, function() {  }, onAudioError);	
+				}
+				audioObject.play();	
 			} else {
-				audioObject = new Media(audioSource, function() {  }, onAudioError);	
+				audioObject.play();
 			}
-			audioObject.play();	
-		} else {
-			audioObject.play();
 		}
+	} catch (ex) {
+		alert(ex.message);
 	}
 }
 

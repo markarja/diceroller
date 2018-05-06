@@ -245,6 +245,7 @@ function playAudio(audioSource, audio) {
 			if(typeof device != "undefined") {
 				if(device.platform == "Android") {
 					audioSource = "/android_asset/www/" + audioSource;
+					alert(audioSource);
 					audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
 				} else if(device.platform == "WinCE") {
 					audioSource = "/app/www/" + audioSource;

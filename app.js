@@ -243,9 +243,19 @@ function playAudio(audioSource, audio) {
 			document.getElementById("audioplayer").src = audioSource;
 			var audioObject = document.getElementById("audioplayer");
 			if(typeof device != "undefined") {
-				if(device.platform == "Android") {
+				if(device.platform == "Android") {					
 					audioSource = "/android_asset/www/" + audioSource;
-					audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
+					window.plugins.NativeAudio.preloadSimple(
+						'roll', audioSource, function(msg) { }, 
+						function(msg) {
+							alert( 'error: ' + msg );
+						}
+					);
+					window.plugins.NativeAudio.play('roll');
+					window.setTimeout(function(){
+				        window.plugins.NativeAudio.unload('roll');
+				    }, 1000 * 3);
+					//audioObject = new Media(audioSource, function() { audioObject.release(); }, onAudioError);
 				} else if(device.platform == "WinCE") {
 					audioSource = "/app/www/" + audioSource;
 					audioObject = new Media(audioSource, function() {  }, onAudioError);

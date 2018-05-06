@@ -259,11 +259,10 @@ function playAudio(audioSource, audio) {
 				} else if(device.platform == "WinCE") {
 					audioSource = "/app/www/" + audioSource;
 					audioObject = new Media(audioSource, function() {  }, onAudioError);
-					audioObject.play();	
 				} else {
 					audioObject = new Media(audioSource, function() {  }, onAudioError);
-					audioObject.play();	
 				}
+				audioObject.play();
 			} else {
 				audioObject.play();
 			}

@@ -128,6 +128,8 @@ function calculateSumAndDisplayIt() {
 
 function roll() {
 	
+	alert('roll()');
+	
 	var start = new Date().getTime();
 	
 	playAudio("res/roll.mp3", ($("#audio").val() == 1));

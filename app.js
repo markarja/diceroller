@@ -234,6 +234,12 @@ function onDeviceReady() {
 			isTesting: true,
 			offsetStatusBar: true,
 			bannerAtTop: true
+		},
+		function() {
+			alert('AdMob initialized successfully.');
+		},
+		function() {
+			alert('AdMob initialization failed.');
 		});	
 	} else {
 		alert('AdMob not initialized.');

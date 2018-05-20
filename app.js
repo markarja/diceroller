@@ -229,10 +229,10 @@ function setDiceLayout() {
 function onDeviceReady() {
 	if(admob) {
 		admob.createBannerView({
-			publisherId: "ca-app-pub-3940256099942544/6300978111",
-			//publisherId: "ca-app-pub-1309397168819129/1051107503",
+			//publisherId: "ca-app-pub-3940256099942544/6300978111",
+			publisherId: "ca-app-pub-1309397168819129/1051107503",
 			adSize: admob.AD_SIZE.SMART_BANNER,
-			isTesting: true,
+			isTesting: false,
 			offsetStatusBar: true,
 			bannerAtTop: true
 		},
